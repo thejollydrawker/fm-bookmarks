@@ -4,6 +4,7 @@ import {customElement} from 'lit/decorators.js';
 import './button';
 import './card';
 import './accordion';
+import './tabs';
 
 @customElement('bookmark-ui')
 class BookmarkUi extends LitElement {
@@ -33,20 +34,22 @@ class BookmarkUi extends LitElement {
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus repudiandae mollitia sunt voluptate nulla nihil nam enim natus illo accusantium dolores iste quibusdam, numquam eaque assumenda soluta exercitationem! Quisquam, nostrum?</p>
         </bookmark-accordion>
       </div>
+
+      <h3>Tabs:</h3>
+      <div class="container w-50">
+        <bookmark-tabs .tabs=${['Item1', 'Item2', 'Item3']}></bookmark-tabs>
+      </div>
     `;
 
   }
 
   static styles = css`
 
-    :host {
-      padding: 2rem;
-    }
-
     .container {
       display: flex;
       gap: 1rem;
       margin: 1rem;
+      padding-left: 2rem;
     }
 
     .w-50 {
@@ -54,7 +57,8 @@ class BookmarkUi extends LitElement {
     }
 
     h3 {
-      margin: 2rem 0rem;
+      margin: 3rem 0rem;
+      padding-left: 2rem;
     }
 
     bookmark-card {
