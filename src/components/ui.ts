@@ -1,5 +1,5 @@
 import {LitElement, html, css} from 'lit';
-import {customElement} from 'lit/decorators.js';
+import {customElement, state} from 'lit/decorators.js';
 
 import './button';
 import './card';
@@ -8,6 +8,10 @@ import './tabs';
 
 @customElement('bookmark-ui')
 class BookmarkUi extends LitElement {
+
+  @state()
+  activeTab: string = 'i1';
+
   render() {
     return html`
       <h2>Components:</h2>
@@ -37,10 +41,30 @@ class BookmarkUi extends LitElement {
 
       <h3>Tabs:</h3>
       <div class="container w-50">
-        <bookmark-tabs .tabs=${['Item1', 'Item2', 'Item3']}></bookmark-tabs>
+        <bookmark-tabs @tab-change=${this.setActiveTab} .tabs=${[{title:'Item1', key: 'i1'}, {title:'Item2', key: 'i2'}, {title:'Item3', key: 'i3'}]}>
+          ${this.renderTab()}
+        </bookmark-tabs>
       </div>
     `;
 
+  }
+
+  setActiveTab({detail}: CustomEvent) {
+    this.activeTab = detail;
+  }
+  
+  renderTab() {
+    switch (this.activeTab) {
+      case 'i1':
+        return html`<div>Content 1</div>`;
+      case 'i2':
+        return html`<div>Content 2</div>`;
+      case 'i3':
+        return html`<div>Content 3</div>`
+      default:
+        return html`<div>No tab content provided</div>`
+    }
+    
   }
 
   static styles = css`
