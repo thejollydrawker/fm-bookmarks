@@ -21,7 +21,7 @@ class BookmarkBtn extends LitElement {
     static styles = css`
         .bookmark-btn {
             box-sizing: border-box;
-            padding: 0.8rem 1rem;
+            padding: 0.7rem 2rem;
             color: white;
             border: none;
             border-radius: 3px;

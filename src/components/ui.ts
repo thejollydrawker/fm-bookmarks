@@ -5,6 +5,7 @@ import './button';
 import './card';
 import './accordion';
 import './tabs';
+import './menu';
 
 @customElement('bookmark-ui')
 class BookmarkUi extends LitElement {
@@ -44,6 +45,12 @@ class BookmarkUi extends LitElement {
         <bookmark-tabs @tab-change=${this.setActiveTab} .tabs=${[{title:'Item1', key: 'i1'}, {title:'Item2', key: 'i2'}, {title:'Item3', key: 'i3'}]}>
           ${this.renderTab()}
         </bookmark-tabs>
+      </div>
+
+      <h3>Menu:</h3>
+      <div class="container">
+        <bookmark-menu .menuItems=${[{title:'Item1', route: 'i1'}, {title:'Item2', route: 'i2'}, {title:'LOGIN', route: 'i2'}]}>
+        </bookmark-menu>
       </div>
     `;
 
