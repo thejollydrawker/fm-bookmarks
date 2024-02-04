@@ -21,7 +21,7 @@ class BookmarkUi extends LitElement {
       <div class="container">
         <bookmark-btn class="red" content="Login"></bookmark-btn>
         <bookmark-btn class="blue" content="Blue"></bookmark-btn>
-        <bookmark-btn class="grey" content="Gray"></bookmark-btn>
+        <!-- <bookmark-btn class="grey" content="Gray"></bookmark-btn> -->
       </div>
 
       <h3>Cards:</h3>
@@ -83,6 +83,10 @@ class BookmarkUi extends LitElement {
       padding-left: 2rem;
     }
 
+    .container:last-child {
+      margin-bottom: 0;
+    }
+
     .w-50 {
       width: 50%;
     }
@@ -90,6 +94,10 @@ class BookmarkUi extends LitElement {
     h3 {
       margin: 3rem 0rem;
       padding-left: 2rem;
+    }
+
+    h2 {
+      margin-top: 0;
     }
 
     bookmark-card {

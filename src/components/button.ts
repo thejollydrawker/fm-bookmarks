@@ -8,10 +8,13 @@ class BookmarkBtn extends LitElement {
     @property()
     content: string;
 
+    @property({type: Boolean})
+    fill: boolean = true;
+
     render() {
         return html`
             <button
-                class="bookmark-btn"
+                class="bookmark-btn ${this.fill ? '' : 'no-fill'}"
             >
                 ${this.content}
             </button>
@@ -32,6 +35,10 @@ class BookmarkBtn extends LitElement {
             cursor: pointer;
             background-color: var( --btn-color, 'grey' );
             border: solid 1px var( --btn-color, 'grey' );
+        }
+
+        .bookmark-btn.no-fill{
+            background-color: unset;
         }
 
         .bookmark-btn:hover {
