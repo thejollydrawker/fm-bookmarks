@@ -29,7 +29,7 @@ class BookmarkBtn extends LitElement {
             border: none;
             border-radius: 3px;
             font-family: inherit;
-            font-size: 14px;
+            font-size: 18px;
             font-weight: 500;
             width: 100%;
             cursor: pointer;

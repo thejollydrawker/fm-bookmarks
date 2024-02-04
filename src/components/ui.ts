@@ -49,7 +49,7 @@ class BookmarkUi extends LitElement {
 
       <h3>Menu:</h3>
       <div class="container">
-        <bookmark-menu .menuItems=${[{title:'Item1', route: 'i1'}, {title:'Item2', route: 'i2'}, {title:'LOGIN', route: 'i2'}]}>
+        <bookmark-menu .menuItems=${['Item1', 'Item2', 'LOGIN']}>
         </bookmark-menu>
       </div>
     `;
@@ -75,13 +75,6 @@ class BookmarkUi extends LitElement {
   }
 
   static styles = css`
-
-    .container {
-      display: flex;
-      gap: 1rem;
-      margin: 1rem;
-      padding-left: 2rem;
-    }
 
     .container:last-child {
       margin-bottom: 0;
@@ -111,6 +104,15 @@ class BookmarkUi extends LitElement {
     }
     bookmark-btn.grey {
       --btn-color: var(--grayish-blue);
+    }
+
+    @media (min-width: 376px) {
+      .container {
+        display: flex;
+        gap: 1rem;
+        margin: 1rem;
+        padding-left: 2rem;
+      }
     }
   `;
 }

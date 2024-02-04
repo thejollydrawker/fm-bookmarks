@@ -11,7 +11,7 @@ class BookmarkMenu extends LitElement {
     title: string | null;
 
     @property({type: Array})
-    menuItems: any[] = [];
+    menuItems: string[] = [];
 
     @state()
     isOpen: boolean = false;
@@ -62,9 +62,9 @@ class BookmarkMenu extends LitElement {
     renderList() {
         return this.menuItems.map((item, index) => {
             if(index !== this.menuItems.length-1) 
-                return html`<li><a class="menu-item">${item.title}</a></li>`; 
+                return html`<li><a class="menu-item">${item}</a></li>`; 
             else 
-                return html `<bookmark-btn class="${this.isOpen ? 'white' : 'red'}" content="${item.title}" .fill=${!this.isOpen}></bookmark-btn>`;
+                return html `<bookmark-btn class="${this.isOpen ? 'white' : 'red'}" content="${item}" .fill=${!this.isOpen}></bookmark-btn>`;
             }
         )
     }
@@ -96,8 +96,8 @@ class BookmarkMenu extends LitElement {
             display: flex;
             gap: 1rem;
             align-items: center;
-            justify-content: space-between;
-            max-width: 70%;
+            justify-content: space-evenly;
+            max-width: 50vw;
             overflow-x: scroll;
         }
 
