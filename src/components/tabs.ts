@@ -17,7 +17,8 @@ class BookmarkTabs extends LitElement {
                 <ul>
                     ${this.tabs.map((item, index) => html`<li record='${item.key}' class="${this.activeTab === index ? 'active' : ''}" @click=${this.setActiveTab}>${item.title}</li>`)}
                 </ul>
-                <div class="slider" style="width: ${100/this.tabs.length}%; left: ${ 0 + (100/this.tabs.length) * this.activeTab}%"></div>
+                <div class="slider" style="width: ${this.width(false)}%; left: ${this.positionX(false)}%"></div>
+                <div class="mobile-slider" style="width: ${this.width(true)}%; left: ${this.positionX(true)}%; top: ${100/this.tabs.length * (this.activeTab+1)}%"></div>
             </div>
             <slot></slot>
         `;
@@ -27,6 +28,20 @@ class BookmarkTabs extends LitElement {
         const key = (e.target as HTMLElement).getAttribute('record');
         this.activeTab = this.tabs.findIndex(tab => tab.key === key);
         this.dispatchEvent(new CustomEvent('tab-change', { detail: key }));
+    }
+
+    private positionX(mobile: boolean): number {
+        if (this.tabs.length > 1 && !mobile) {
+            return (100/this.tabs.length) * this.activeTab
+        }
+        return 100/3;
+    }
+
+    private width(mobile: boolean): number {
+        if (this.tabs.length > 1 && !mobile) {
+            return 100/this.tabs.length;
+        }
+        return 100/3;
     }
 
     static styles = css`
@@ -40,10 +55,15 @@ class BookmarkTabs extends LitElement {
             width: 100%;
         }
 
-        .slider {
+        .slider, .mobile-slider {
             position: absolute;
             bottom: 0;
-            border: 1px solid var(--soft-red);
+            height: 0px;
+            border: 1.5px solid var(--soft-red);
+        }
+
+        .slider {
+            display: none;
             transition: 400ms ease-in-out;
         }
 
@@ -51,19 +71,23 @@ class BookmarkTabs extends LitElement {
             margin: 0;
             padding: 0;
             display: flex;
-            border-bottom: 1px solid lightgray;
+            flex-direction: column;
             box-sizing: border-box;
             width: 100%;
             -webkit-user-select: none;
             user-select: none;
         }
+
+        ul:first-child {
+            border-top: 1px solid lightgray;
+        }
     
         li {
             all: unset;
             text-align: center;
-            padding: 0 0.5rem 1rem 0.5rem;
+            padding: 0.5rem 0.5rem 1rem 0.5rem;
             flex: 1 1 0;
-            width: 0;
+            border-bottom: 1px solid lightgray;
             cursor: pointer;
             color: var(--grayish-blue);
             
@@ -78,6 +102,25 @@ class BookmarkTabs extends LitElement {
 
         ::slotted(*) {
             padding: 1rem;
+        }
+
+        @media (min-width: 376px) {
+            ul {
+                flex-direction: row;
+                border-top: unset;
+            }
+
+            ul:first-child {
+                border-top: unset;
+            }
+
+            .slider {
+                display: block;
+            }
+
+            .mobile-slider {
+                display: none
+            }
         }
     `;
 }
