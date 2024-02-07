@@ -24,12 +24,12 @@ class BookmarkBtn extends LitElement {
     static styles = css`
         .bookmark-btn {
             box-sizing: border-box;
-            padding: 0.7rem 2rem;
+            padding: 0.7rem 0.5rem;
             color: white;
             border: none;
             border-radius: 3px;
             font-family: inherit;
-            font-size: 18px;
+            font-size: inherit;
             font-weight: 500;
             width: 100%;
             cursor: pointer;
@@ -41,7 +41,7 @@ class BookmarkBtn extends LitElement {
             background-color: unset;
         }
 
-        .bookmark-btn:hover {
+        .bookmark-btn:not(.no-fill):hover {
             background-color: white;
             color: var( --btn-color, 'grey' );
             border: solid 1px var( --btn-color, 'grey' );
