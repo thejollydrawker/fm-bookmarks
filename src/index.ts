@@ -14,6 +14,9 @@ class MyElement extends LitElement {
 
   @state()
   activeTab: BookmarkTab = BookmarkTab.BOOKMARKING;
+
+  @state()
+  faq: string[] = ['What is Bookmark?', 'How can I request a new browser?', 'Is there a mobile app?', 'What about other Chromium browsers?'];
   
   render() {
     const tabItems: TabItem[] = [{title: 'Simple Bookmarking', key: BookmarkTab.BOOKMARKING}, {title: 'Speedy Searching', key: BookmarkTab.SEARCHING}, {title: 'Easy Sharing', key: BookmarkTab.SHARING}]
@@ -76,15 +79,29 @@ class MyElement extends LitElement {
           </div>
         </section>
 
-        <section class="bookmark-section py-3 features-section">
-          <h2>Frequently Asked Questions</h2>
-          <p class="text">Here are some of our FAQs. If you have any other questions you’d like answered please feel free to email us.</p>
-       
+        <section class="bookmark-section">
+          <div class="features-section">
+            <h2>Frequently Asked Questions</h2>
+            <p class="text">Here are some of our FAQs. If you have any other questions you’d like answered please feel free to email us.</p>
+          </div>
           <div class="py-3">
-            
+            ${this.renderAccordions()}
+          </div>
+          <div class="more-info-button">
+            <bookmark-btn class="blue" content="More info"></bookmark-btn>
           </div>
         </section>
-        
+        <section class="bookmark-section banner">
+          <h2>Stay up-to-date with what we're doing</h2>
+          <h4>35,000+ ALREADY JOINED</h4>
+          <form class="contact-us">
+            <input type="text" />
+            <bookmark-btn class="red" content="Contact us"></bookmark-btn>
+          </form>
+        </section>
+        <footer>
+          <svg width="148" height="25" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M37 6.299h5.227c.746 0 1.434.155 2.062.466.629.311 1.123.735 1.484 1.27s.542 1.12.542 1.754c0 .672-.165 1.254-.495 1.746-.33.491-.762.868-1.297 1.129v.15c.697.248 1.25.643 1.661 1.185.41.541.616 1.191.616 1.95 0 .735-.196 1.385-.588 1.951a3.817 3.817 0 0 1-1.587 1.307c-.665.305-1.403.457-2.212.457H37V6.299zm5.04 5.45c.548 0 .986-.152 1.316-.457.33-.305.495-.688.495-1.148 0-.448-.159-.824-.476-1.13-.318-.304-.738-.457-1.26-.457H39.52v3.192h2.52zm.28 5.619c.61 0 1.086-.159 1.428-.476.342-.317.513-.731.513-1.241 0-.51-.174-.927-.522-1.251-.349-.324-.847-.485-1.494-.485H39.52v3.453h2.8zm12.927 2.595c-1.307 0-2.492-.308-3.556-.924a6.711 6.711 0 0 1-2.511-2.53c-.61-1.07-.915-2.246-.915-3.528 0-1.281.305-2.457.915-3.528a6.711 6.711 0 0 1 2.51-2.529C52.756 6.308 53.94 6 55.248 6c1.306 0 2.492.308 3.556.924a6.711 6.711 0 0 1 2.51 2.53c.61 1.07.915 2.246.915 3.527 0 1.282-.305 2.458-.915 3.528a6.711 6.711 0 0 1-2.51 2.53c-1.064.616-2.25.924-3.556.924zm0-2.39a4.52 4.52 0 0 0 2.258-.578 4.177 4.177 0 0 0 1.615-1.624c.392-.697.588-1.494.588-2.39 0-.896-.196-1.692-.588-2.389a4.177 4.177 0 0 0-1.615-1.624 4.52 4.52 0 0 0-2.258-.579 4.47 4.47 0 0 0-2.25.579 4.195 4.195 0 0 0-1.605 1.624c-.392.697-.588 1.493-.588 2.39 0 .895.196 1.692.588 2.389a4.195 4.195 0 0 0 1.605 1.624 4.47 4.47 0 0 0 2.25.578zm15.353 2.39c-1.307 0-2.492-.308-3.556-.924a6.711 6.711 0 0 1-2.51-2.53c-.61-1.07-.915-2.246-.915-3.528 0-1.281.305-2.457.914-3.528a6.711 6.711 0 0 1 2.511-2.529C68.108 6.308 69.294 6 70.6 6c1.307 0 2.492.308 3.556.924a6.711 6.711 0 0 1 2.51 2.53c.61 1.07.915 2.246.915 3.527 0 1.282-.305 2.458-.914 3.528a6.711 6.711 0 0 1-2.511 2.53c-1.064.616-2.25.924-3.556.924zm0-2.39a4.52 4.52 0 0 0 2.259-.578 4.177 4.177 0 0 0 1.614-1.624c.392-.697.588-1.494.588-2.39 0-.896-.196-1.692-.588-2.389a4.177 4.177 0 0 0-1.614-1.624 4.52 4.52 0 0 0-2.259-.579 4.47 4.47 0 0 0-2.25.579 4.195 4.195 0 0 0-1.605 1.624c-.392.697-.588 1.493-.588 2.39 0 .895.196 1.692.588 2.389a4.195 4.195 0 0 0 1.606 1.624 4.47 4.47 0 0 0 2.249.578zM79.83 6.3h2.52v5.73h.15l4.89-5.73h3.043v.149L85.6 11.973l5.338 7.542v.149h-3.08l-3.994-5.693-1.512 1.773v3.92h-2.52V6.299zM93.779 6h3.248l3.546 9.39h.15L104.268 6h3.267v13.365h-2.501v-6.589l.15-2.221h-.15l-3.398 8.81h-1.96l-3.416-8.81h-.149l.15 2.221v6.59h-2.483V6zm20.8 0h2.894l5.021 13.365h-2.781l-1.12-3.192h-5.115l-1.12 3.192h-2.781L114.579 6zm3.193 7.859l-1.176-3.36-.486-1.606h-.149l-.485 1.606-1.195 3.36h3.49zM124.553 6h4.872c.871 0 1.646.18 2.324.541.678.361 1.204.862 1.577 1.503.374.64.56 1.366.56 2.175 0 .858-.27 1.62-.812 2.286a4.617 4.617 0 0 1-2.044 1.447l-.018.13 3.584 5.134v.15h-2.894l-3.453-5.022h-1.176v5.021h-2.52V6zm4.853 6.03c.573 0 1.04-.175 1.4-.523.361-.349.542-.79.542-1.326 0-.51-.172-.945-.514-1.306-.342-.361-.806-.542-1.39-.542h-2.371v3.696h2.333zm7.23-6.03h2.52v5.73h.15l4.89-5.73h3.043v.15l-4.835 5.525 5.34 7.541v.15h-3.08l-3.996-5.694-1.512 1.773v3.92h-2.52V6z" fill="#FFF" fill-rule="nonzero"/><g><circle fill="#FFF" cx="12.5" cy="12.5" r="12.5"/><path d="M9 9v10l3.54-3.44L16.078 19V9a2 2 0 0 0-2-2H11a2 2 0 0 0-2 2z" fill="#242A45"/></g></g></svg>
+        </footer>
     `;
   }
 
@@ -105,9 +122,21 @@ class MyElement extends LitElement {
     }
   }
 
+  renderAccordions() {
+    return this.faq.map(q => {
+        return html`
+        <div class="accordion-container">
+          <bookmark-accordion .title=${q}>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus repudiandae mollitia sunt voluptate nulla nihil nam enim natus illo accusantium dolores iste quibusdam, numquam eaque assumenda soluta exercitationem! Quisquam, nostrum?</p>
+          </bookmark-accordion>
+        </div>
+        `;
+    })
+  }
+
   static styles = css`
       :host {
-        padding: 2rem;
+        padding: 2rem 2rem 0rem 2rem;
         font-size: 14px;
       }
 
@@ -116,21 +145,22 @@ class MyElement extends LitElement {
         padding-right: 5rem;
       }
 
-      .py-5 {
-        padding-top: 5rem;
-        padding-bottom: 5rem;
-      }
-
       .py-3 {
         padding-top: 3rem;
         padding-bottom: 3rem;
       }
 
       .flex-container {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .accordion-container {
+        display: flex;
+        width: 90%;
+        margin: auto;
       }
 
       .buttons-get-extension {
@@ -183,14 +213,19 @@ class MyElement extends LitElement {
         color: var(--grayish-blue);
       }
 
-      bookmark-btn.blue {
-        --btn-color: var(--soft-blue);
-        width: 100%;
-      }
-
-      bookmark-btn.grey {
-        --btn-color: var(--grayish-blue);
-        width: 100%;
+      bookmark-btn {
+        &.blue {
+          --btn-color: var(--soft-blue);
+          width: 100%;
+        }
+        &.grey {
+          --btn-color: var(--grayish-blue);
+          width: 100%;
+        }
+        &.red {
+          --btn-color: var(--soft-red);
+          width: 100%;
+        }
       }
 
       .features-section {
@@ -202,28 +237,73 @@ class MyElement extends LitElement {
       .bookmark-section{
         padding: 0 2rem;
         margin-top: 2rem;
-      }
 
-      .bookmark-flex-item {
-        width: 100%;
-      }
+        .bookmark-flex-item {
+          width: 100%;
+        }
 
-      .bookmark-section .bookmark-flex-item:last-of-type {
-        order: 1;
-      }
+        .bookmark-flex-item:last-of-type {
+          order: 1;
+        }
 
-      .bookmark-section .bookmark-flex-item:first-of-type {
-        order: 2;
-      }
-
-      bookmark-card {
-        width: 100%;
+        .bookmark-flex-item:first-of-type {
+          order: 2;
+        }
       }
 
       .cards-section {
         width: 90%;
         margin: auto;
         padding: 1rem 0;
+
+        bookmark-card {
+          width: 100%;
+        }
+      }
+
+      .more-info-button {
+        width: fit-content;
+        margin: auto;
+
+        bookmark-btn {
+          --padding-x: 2rem;
+        }
+      }
+
+      .banner {
+        background-color: var(--soft-blue);
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+        padding-top: 2.5rem;
+        padding-bottom: 2.5rem;
+
+        h2, h4 {
+          font-weight: 500;
+          color: white;
+          text-align: center;
+        }
+
+        h4 {
+          order: 1;
+        }
+
+        h2 {
+          order: 2;
+        }
+
+        form {
+          order: 3;
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+        }
+      }
+
+      footer {
+        background-color: var(--dark-blue);
+        width: 100%;
+        padding: 2rem 0;
       }
 
       @media (min-width: 376px) {
@@ -238,19 +318,20 @@ class MyElement extends LitElement {
         }
 
         .bookmark-section{
-          padding: 0 4rem;
-        }
+          padding-left: 4rem;
+          padding-right: 4rem;
 
-        .bookmark-section .bookmark-flex-item:last-of-type {
-          order: 2;
-        }
+          .bookmark-flex-item {
+            width: 50%;
+          }
+          
+          .bookmark-flex-item:last-of-type {
+            order: 2;
+          }
 
-        .bookmark-section .bookmark-flex-item:first-of-type {
-          order: 1;
-        }
-
-        .bookmark-flex-item {
-          width: 50%;
+          .bookmark-flex-item:first-of-type {
+            order: 1;
+          }
         }
 
         .features-section {
@@ -259,25 +340,29 @@ class MyElement extends LitElement {
           margin-right: auto;
         }
 
-        bookmark-card {
-          width: 30%;
-        }
-
-        bookmark-card:nth-of-type(2) {
-          margin-top: 2.5rem;
-        }
-
-        bookmark-card:nth-of-type(3) {
-          margin-top: 5rem;
-        }
-
         .cards-section {
           width: 70%;
+
+          bookmark-card {
+            width: 30%;
+
+            &:nth-of-type(2) {
+              margin-top: 2.5rem;
+            }
+
+            &:nth-of-type(3) {
+              margin-top: 5rem;
+            }
+          }
         }
 
         .text-container {
           padding-right: 5rem;
           padding-left: 3rem;
+        }
+
+        .accordion-container {
+          width: 60%;
         }
       }
   `;

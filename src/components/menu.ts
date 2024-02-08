@@ -193,6 +193,7 @@ class BookmarkMenu extends LitElement {
 
         bookmark-btn.red {
             --btn-color: var(--soft-red);
+            --padding-x: 2rem;
         }
         
         bookmark-btn.white {
@@ -207,6 +208,10 @@ class BookmarkMenu extends LitElement {
 
             .overlay {
                 display: none;
+            }
+
+            .desktop-menu {
+                display: flex;
             }
         }
     `;

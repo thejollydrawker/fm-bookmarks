@@ -33,7 +33,7 @@ class BookmarkAccordion extends LitElement {
             font-size: inherit;
             color: var(--grayish-blue);
             font-weight: 400;
-            font-size: 16px;
+            font-size: inherit
         }
 
         :host {
@@ -41,12 +41,12 @@ class BookmarkAccordion extends LitElement {
         }
 
         .content {
-            transition: ease-in-out 500ms;
+            transition: max-height ease-in-out 400ms;
             overflow-y: hidden;
             line-height: 2.2;
 
             &.open {
-                max-height: 100%;
+                max-height: 300px;
             }
 
             &.hidden{
