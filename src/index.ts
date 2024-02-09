@@ -7,6 +7,7 @@ import './components/card';
 import './components/accordion';
 import './components/tabs';
 import './components/menu';
+import './components/input';
 import { BookmarkTab, TabItem } from './models/TabItem';
 
 @customElement('my-element')
@@ -95,7 +96,7 @@ class MyElement extends LitElement {
           <h2>Stay up-to-date with what we're doing</h2>
           <h4>35,000+ ALREADY JOINED</h4>
           <form class="contact-us">
-            <input type="text" />
+            <bookmark-input-text placeholder="Enter your email address" errorMsg="Whoops, make sure it's an email"></bookmark-input-text>
             <bookmark-btn class="red" content="Contact us"></bookmark-btn>
           </form>
         </section>
