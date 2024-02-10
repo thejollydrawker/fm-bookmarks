@@ -105,6 +105,10 @@ class BookmarkTabs extends LitElement {
         }
 
         @media (min-width: 376px) {
+            .tabs {
+                width: 60%;
+                margin: auto;
+            }
             ul {
                 flex-direction: row;
                 border-top: unset;

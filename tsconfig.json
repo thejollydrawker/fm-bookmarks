@@ -8,5 +8,5 @@
     "allowJs": true,
     "experimentalDecorators": true
   },
-  "include": ["src/**/*.ts"]
+  "include": ["src/**/*.ts", "custom.d.ts"]
 }
