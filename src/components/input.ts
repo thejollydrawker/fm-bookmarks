@@ -22,7 +22,7 @@ class BookmarkInputText extends LitElement {
 
     render() {
         return html`
-        <div class="${this.showError ? 'error' : ''}">
+        <div class="input-container${this.showError ? 'error' : ''}">
             <input id="bookmarkInput" placeholder=${this.placeholder} .value=${this.value} class="bookmark-input" @change=${this.handleInputEvent} type="text" />
             <svg class="error-icon ${this.showError ? 'show' : 'hide'}" xmlns="http://www.w3.org/2000/svg" width="20" height="20"><g fill="none" fill-rule="evenodd"><circle cx="10" cy="10" r="10" fill="#FA5959"/><g fill="#FFF" transform="translate(9 5)"><rect width="2" height="7" rx="1"/><rect width="2" height="2" y="8" rx="1"/></g></g></svg>
             <span class="error-msg ${this.showError ? 'show' : 'hide'}">${this.errorMsg}</span>
@@ -39,6 +39,7 @@ class BookmarkInputText extends LitElement {
     static styles = css`
         .bookmark-input {
             width: 100%;
+            height: 100%;
             min-height: 1rem;
             box-sizing: border-box;
             padding: 0.7rem;
@@ -55,9 +56,10 @@ class BookmarkInputText extends LitElement {
             }
         }
 
-        div {
+        .input-container {
             position: relative;
             width:100%;
+            height: 100%;
             border-radius: 5px;
 
             &.error {

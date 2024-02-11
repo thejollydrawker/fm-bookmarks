@@ -18,8 +18,8 @@ class BookmarkImageText extends LitElement {
         return html`
         <section class="bookmark-image-text ${this.imagePosition === 'right' ? '' : 'left'}">
             <div class="image">
-                <div class="image-container">
-                    <div class="background-form"></div>
+                <div part="image-container" class="image-container">
+                    <div part="background-form" class="background-form"></div>
                     <slot name="svg"></slot>
                 </div>
             </div>
