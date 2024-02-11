@@ -1,15 +1,22 @@
 import { LitElement, html, css } from "lit";
-import { customElement, property, state } from "lit/decorators.js";
+import { customElement, property} from "lit/decorators.js";
 
 import './button';
 
+export enum ImagePosition {
+    left = 'left',
+    right = 'right'
+}
 
 @customElement('bookmark-image-text')
 class BookmarkImageText extends LitElement {
 
+    @property({type: String})
+    imagePosition: ImagePosition = ImagePosition.right;
+
     render() {
         return html`
-        <section class="bookmark-image-text">
+        <section class="bookmark-image-text ${this.imagePosition === 'right' ? '' : 'left'}">
             <div class="image">
                 <div class="image-container">
                     <div class="background-form"></div>
@@ -47,8 +54,10 @@ class BookmarkImageText extends LitElement {
 
         .image-container {
             position: relative;
-            min-height: 550px;
+            min-height: 466px;
             width: 1200px;
+            padding-left: 1rem;
+            padding-right: 1rem;
         }
 
         .background-form {
@@ -60,6 +69,14 @@ class BookmarkImageText extends LitElement {
             top: 100px;
             left: 150px;
             border-radius: 370px 0 0 370px;
+        }
+
+        .bookmark-image-text.left {
+            transform: scaleX(-1);
+
+            ::slotted(*) {
+                transform: scaleX(-1);
+            }
         }
 
         @media (min-width: 376px) {
@@ -77,7 +94,6 @@ class BookmarkImageText extends LitElement {
                     order: 1;
                     width: 50%;
                 }
-
             }
         }
     `;
