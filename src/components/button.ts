@@ -36,8 +36,10 @@ class BookmarkBtn extends LitElement {
             font-weight: 500;
             width: 100%;
             cursor: pointer;
-            background-color: var( --btn-color, 'grey' );
-            border: solid 1px var( --btn-color, 'grey' );
+            background-color: var( --btn-color, grey );
+            border: solid 1px var( --btn-color, grey );
+            --box-shadow: 5px 5px 5px var( --btn-shadow, lightgrey );
+            box-shadow: var(--box-shadow);
         }
 
         .bookmark-btn.no-fill{
@@ -46,8 +48,8 @@ class BookmarkBtn extends LitElement {
 
         .bookmark-btn:not(.no-fill):hover {
             background-color: white;
-            color: var( --btn-color, 'grey' );
-            border: solid 1px var( --btn-color, 'grey' );
+            color: var( --btn-color, grey );
+            border: solid 1px var( --btn-color, grey );
         }
     `;
 }

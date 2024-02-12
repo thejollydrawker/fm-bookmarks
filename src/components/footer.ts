@@ -47,6 +47,15 @@ class BookmarkFooter extends LitElement {
                 flex-direction: column;
                 gap: 1rem;
                 padding: 0;
+
+                li {
+                    cursor: pointer;
+                    font-size: 16px;
+
+                    &:hover {
+                        color: var(--soft-red, 'red');
+                    }
+                }
             }
 
             .footer-menu {
@@ -80,7 +89,7 @@ class BookmarkFooter extends LitElement {
 
                 .footer-menu {
                     flex-direction: row;
-                    gap: 1rem;
+                    gap: 1.5rem;
                 }
             }
         }

@@ -30,6 +30,7 @@ class BookmarkCard extends LitElement {
             --btn-color: var(--soft-blue);
             margin-top: 1rem;
             width: 75%;
+            font-size: 14px;
         }
 
         article {

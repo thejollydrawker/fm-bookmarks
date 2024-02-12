@@ -38,7 +38,7 @@ class BookmarkImageText extends LitElement {
             flex-direction: column;
             align-items: center;
             justify-content: space-between;
-            gap: 1rem;
+            gap: 2rem;
             overflow-x: hidden;
 
             .image {
@@ -48,7 +48,7 @@ class BookmarkImageText extends LitElement {
 
             .text {
                 order: 2;
-                width: 100%;
+                width: 90%;
             }
         }
 
