@@ -50,6 +50,7 @@ class BookmarkFooter extends LitElement {
 
                 & li {
                     cursor: pointer;
+                    text-align: center;
                     font-size: 16px;
 
                     &:hover {
@@ -58,7 +59,7 @@ class BookmarkFooter extends LitElement {
                 }
             }
 
-            &.footer-menu {
+            & .footer-menu {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
