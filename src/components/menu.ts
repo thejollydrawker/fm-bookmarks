@@ -200,7 +200,7 @@ class BookmarkMenu extends LitElement {
             width: 100%;
         }
 
-        @media (min-width: 376px) {
+        @media (min-width: 769px) {
             .hamburguer {
                 display: none;
             }

@@ -79,7 +79,7 @@ class BookmarkImageText extends LitElement {
             }
         }
 
-        @media (min-width: 376px) {
+        @media (min-width: 769px) {
             .bookmark-image-text {
                 flex-direction: row;
                 padding-left: 4rem;

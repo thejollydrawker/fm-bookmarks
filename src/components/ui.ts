@@ -106,7 +106,7 @@ class BookmarkUi extends LitElement {
       --btn-color: var(--grayish-blue);
     }
 
-    @media (min-width: 376px) {
+    @media (min-width: 769px) {
       .container {
         display: flex;
         gap: 1rem;

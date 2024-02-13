@@ -168,13 +168,7 @@ class MyElement extends LitElement {
 
   static styles = css`
       :host {
-        padding: 2rem 2rem 0rem 2rem;
         font-size: 14px;
-      }
-
-      .px-5 {
-        padding-left: 5rem;
-        padding-right: 5rem;
       }
 
       .py-3 {
@@ -187,6 +181,10 @@ class MyElement extends LitElement {
         flex-direction: column;
         align-items: center;
         gap: 1rem;
+      }
+
+      bookmark-menu {
+        margin-top: 1rem;
       }
 
       .accordion-container {
@@ -262,7 +260,7 @@ class MyElement extends LitElement {
         margin: auto;
         padding: 1rem 0;
 
-        bookmark-card {
+        & bookmark-card {
           width: 100%;
           margin-top: 1rem;
         }
@@ -272,7 +270,7 @@ class MyElement extends LitElement {
         width: fit-content;
         margin: auto;
 
-        bookmark-btn {
+        & bookmark-btn {
           --padding-x: 2rem;
         }
       }
@@ -286,29 +284,29 @@ class MyElement extends LitElement {
         padding-bottom: 2.5rem;
         margin-top: 3.5rem;
 
-        h2, h4 {
+        & h2, h4 {
           font-weight: 500;
           color: white;
           text-align: center;
         }
 
-        h4 {
+        & h4 {
           order: 1;
           font-size: 12px;
           letter-spacing: 0.5rem;
         }
 
-        h2 {
+        & h2 {
           order: 2;
         }
 
-        form {
+        & form {
           order: 3;
           display: flex;
           flex-direction: column;
           gap: 1rem;
 
-          bookmark-btn {
+          & bookmark-btn {
             --btn-shadow: none;
           }
         }
@@ -324,8 +322,8 @@ class MyElement extends LitElement {
       }
 
       .tab-text {
-          text-align: center;
-          bookmark-btn {
+        text-align: center;
+        & bookmark-btn {
           display: none;
         }
       }
@@ -338,7 +336,7 @@ class MyElement extends LitElement {
           min-height: 400px;
       }
 
-      @media (min-width: 376px) {
+      @media (min-width: 769px) {
         :host {
           font-size: 18px;
         }
@@ -362,12 +360,12 @@ class MyElement extends LitElement {
 
         .cards-section {
           width: 70%;
-
-          bookmark-card {
+        
+          & bookmark-card {
             width: 30%;
-
+          
             &:nth-of-type(2) {
-              margin-top: 2.5rem;
+                margin-top: 2.5rem;
             }
 
             &:nth-of-type(3) {
@@ -375,7 +373,7 @@ class MyElement extends LitElement {
             }
           }
         }
-
+        
         .text-container {
           padding-right: 5rem;
           padding-left: 3rem;
@@ -386,21 +384,21 @@ class MyElement extends LitElement {
         }
 
         .banner {
-            form {
+            & form {
             width: 50%;
             margin: auto;
             flex-direction: row;
 
-            bookmark-input-text {
+            & bookmark-input-text {
               width: 75%;
             }
 
-            bookmark-btn {
+            & bookmark-btn {
               width: 25%;
             }
           }
 
-          h4, h2 {
+          & h4, h2 {
             width: 30%;
             margin: auto;
           }
@@ -414,11 +412,11 @@ class MyElement extends LitElement {
           margin: auto;
           text-align: start;
 
-          p, h1 {
+          & p, h1 {
             margin: 0;
           }
 
-          bookmark-btn {
+          & bookmark-btn {
             display: block;
             width: 25%;
           }

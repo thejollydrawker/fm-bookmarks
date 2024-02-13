@@ -42,13 +42,13 @@ class BookmarkFooter extends LitElement {
             justify-content: space-between;
             flex-direction: column;
 
-            ul {
+            & ul {
                 display: flex;
                 flex-direction: column;
                 gap: 1rem;
                 padding: 0;
 
-                li {
+                & li {
                     cursor: pointer;
                     font-size: 16px;
 
@@ -58,7 +58,7 @@ class BookmarkFooter extends LitElement {
                 }
             }
 
-            .footer-menu {
+            &.footer-menu {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
@@ -79,15 +79,15 @@ class BookmarkFooter extends LitElement {
             color: white;
         }
 
-        @media (min-width: 376px) {
+        @media (min-width: 769px) {
             .footer-container {
                 flex-direction: row;
 
-                ul {
+                & ul {
                     flex-direction: row;
                 }
 
-                .footer-menu {
+                & .footer-menu {
                     flex-direction: row;
                     gap: 1.5rem;
                 }
