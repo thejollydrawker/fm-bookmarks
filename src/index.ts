@@ -48,7 +48,7 @@ class MyElement extends LitElement {
       </bookmark-image-text>
 
        <section class="features">
-        <div class="features-section">
+        <div class="features-section bookmark-section">
             <h2>Features</h2>
             <p class="text">Our aim is to make it quick and easy for you to access your favourite websites. Your bookmarks sync between your devices so you can access them on the go.</p>
         </div>
@@ -184,7 +184,8 @@ class MyElement extends LitElement {
       }
 
       bookmark-menu {
-        margin-top: 1rem;
+        padding-top: 1rem;
+        font-size: 16px;
       }
 
       .accordion-container {
@@ -332,10 +333,6 @@ class MyElement extends LitElement {
           height: 300px;
       }
 
-      #tabImageText::part(image-container) {
-          min-height: 400px;
-      }
-
       @media (min-width: 769px) {
         :host {
           font-size: 18px;
@@ -347,11 +344,6 @@ class MyElement extends LitElement {
           flex-direction: row;
         }
 
-        .bookmark-section{
-          padding-left: 4rem;
-          padding-right: 4rem;
-        }
-
         .features-section {
           width: 40%;
           margin-left: auto;
@@ -359,7 +351,7 @@ class MyElement extends LitElement {
         }
 
         .cards-section {
-          width: 70%;
+          width: 90%;
         
           & bookmark-card {
             width: 30%;
@@ -399,7 +391,7 @@ class MyElement extends LitElement {
           }
 
           & h4, h2 {
-            width: 30%;
+            width: 33%;
             margin: auto;
           }
         }
@@ -420,6 +412,21 @@ class MyElement extends LitElement {
             display: block;
             width: 25%;
           }
+        }
+
+        #tabImageText::part(image-container) {
+          min-height: 400px;
+        }
+      }
+
+      @media (min-width: 1280px) {
+        .bookmark-section {
+          padding-left: 4rem;
+          padding-right: 4rem;
+        }
+
+        .cards-section {
+          width: 70%;
         }
       }
   `;

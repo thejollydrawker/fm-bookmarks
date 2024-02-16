@@ -33,7 +33,7 @@ class BookmarkMenu extends LitElement {
                     <div class="hamburguer" @click=${this.toggle}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="15"><path fill="#242A45" fill-rule="evenodd" d="M0 0h18v3H0V0zm0 6h18v3H0V6zm0 6h18v3H0v-3z"/></svg>
                     </div>
-                    <ul class="desktop-menu" style="width: ${15 * this.menuItems.length}%;">
+                    <ul class="desktop-menu">
                         ${this.renderList()}
                     </ul>
                 </div>
@@ -79,6 +79,7 @@ class BookmarkMenu extends LitElement {
         :host {
             width: 100%;
             display: block;
+            font-size: 16px;
         }
 
         .desktop-menu {
@@ -94,6 +95,10 @@ class BookmarkMenu extends LitElement {
             align-items: center;
             justify-content: space-between;
             padding: 0.5rem 3rem;
+
+            & svg {
+                width: 100%;
+            }
         }
 
         .overlay {
@@ -109,11 +114,10 @@ class BookmarkMenu extends LitElement {
 
         ul{
             display: flex;
-            gap: 1rem;
+            gap: 1.5rem;
             align-items: center;
+            width: 100%;
             justify-content: space-evenly;
-            max-width: 50vw;
-            overflow-x: scroll;
         }
 
         .mobile-menu {
@@ -125,21 +129,25 @@ class BookmarkMenu extends LitElement {
             padding: 2rem 1rem;
             box-sizing: border-box;
             z-index: 1;
-        }
 
-        .mobile-menu > ul {
-            flex-direction: column;
-            width: 100%;
-            max-width: 100%;
-            margin-top: 2rem;
-        }
+            & ul {
+                flex-direction: column;
+                width: 100%;
+                max-width: 100%;
+                margin-top: 2rem;
 
-        .mobile-menu > ul > li {
-            border-top: white solid 0.5px;
-            color: white;
-            width: 100%;
-            text-align: center;
-            padding: 1.5rem 0rem;
+                & li {
+                    border-top: white solid 0.5px;
+                    color: white;
+                    width: 100%;
+                    text-align: center;
+                    padding: 1.5rem 0rem;
+                }
+            }
+
+            & bookmark-btn {
+                --btn-shadow: none;
+            }
         }
 
         .hamburguer {

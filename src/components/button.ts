@@ -35,11 +35,13 @@ class BookmarkBtn extends LitElement {
             font-size: inherit;
             font-weight: 500;
             width: 100%;
+            min-width: fit-content;
             cursor: pointer;
             background-color: var( --btn-color, grey );
             border: solid 1px var( --btn-color, grey );
             --box-shadow: 5px 5px 5px var( --btn-shadow, lightgrey );
             box-shadow: var(--box-shadow);
+            white-space: nowrap;
         }
 
         .bookmark-btn.no-fill{

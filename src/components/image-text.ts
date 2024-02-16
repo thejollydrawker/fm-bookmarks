@@ -58,6 +58,12 @@ class BookmarkImageText extends LitElement {
             width: 1200px;
             padding-left: 1rem;
             padding-right: 1rem;
+
+            & ::slotted(img) {
+                width: 90vw;
+                min-width: 400px;
+                object-fit: cover;
+            }
         }
 
         .background-form {
@@ -65,8 +71,9 @@ class BookmarkImageText extends LitElement {
             position: absolute;
             z-index: -1;
             width: 1200px;
-            height: 350px;
-            top: 100px;
+            height: 40vw;
+            min-height: 225px;
+            top: 20vw;
             left: 150px;
             border-radius: 370px 0 0 370px;
         }
@@ -94,6 +101,17 @@ class BookmarkImageText extends LitElement {
                     order: 1;
                     width: 50%;
                 }
+            }
+
+            .image-container ::slotted(img) {
+                width: unset;
+                min-width: 400px;
+            }
+
+            .background-form {
+                height: 350px;
+                top: 100px;
+                left: 150px;
             }
         }
     `;
