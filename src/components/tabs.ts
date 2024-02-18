@@ -103,6 +103,7 @@ class BookmarkTabs extends LitElement {
         ::slotted(*) {
             padding-top: 3rem;
             display: block;
+            transition: 200ms ease-in;
         }
 
         @media (min-width: 769px) {

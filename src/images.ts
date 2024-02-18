@@ -5,7 +5,8 @@ import headerImage from './assets/illustration-hero.svg';
 import chrome from './assets/logo-chrome.svg'; 
 import opera from './assets/logo-opera.svg'; 
 import firefox from './assets/logo-firefox.svg'; 
-import dots from './assets/bg-dots.svg'; 
+import dots from './assets/bg-dots.svg';
+import hamburguer from './assets/icon-hamburger.svg';
 
 export {
     tabImage1,
@@ -15,5 +16,6 @@ export {
     chrome,
     opera,
     firefox,
-    dots
+    dots,
+    hamburguer
 }

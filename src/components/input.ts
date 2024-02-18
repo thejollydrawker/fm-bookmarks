@@ -50,10 +50,6 @@ class BookmarkInputText extends LitElement {
             &:focus {
                 outline: solid var(--dark-blue, 'lightblue');
             }
-
-            &.error {
-                border: solid 2px var(--soft-red, 'red');
-            }
         }
 
         .input-container {
@@ -68,6 +64,10 @@ class BookmarkInputText extends LitElement {
 
                 & .bookmark-input {
                     border: solid 2px var(--soft-red, 'red');
+
+                    &:focus {
+                        outline: solid var(--soft-red, 'red');
+                    }
                 }
             }
         }

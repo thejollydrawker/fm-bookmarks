@@ -3,6 +3,13 @@ export interface TabItem {
     key: string;
 }
 
+export interface TabContent {
+    title: string;
+    text: string;
+    image: string;
+    key: BookmarkTab;
+}
+
 export enum BookmarkTab {
     BOOKMARKING = 'bookmarking',
     SEARCHING = 'searching',

@@ -11,7 +11,7 @@ import './components/input';
 import './components/image-text';
 import './components/footer';
 import * as images from './images';
-import { BookmarkTab, TabItem } from './models/TabItem';
+import { BookmarkTab, TabContent, TabItem } from './models/TabItem';
 import { ImagePosition } from './components/image-text';
 
 @customElement('my-element')
@@ -23,6 +23,14 @@ class MyElement extends LitElement {
   @state()
   faq: string[] = ['What is Bookmark?', 'How can I request a new browser?', 'Is there a mobile app?', 'What about other Chromium browsers?'];
   
+  @state()
+  tabContent: TabContent[] = [
+    {title: 'A Simple Bookmark Manager', key: BookmarkTab.BOOKMARKING, text:'Organize your bookmarks however you like. Our simple drag-and-drop interface gives you complete control over how you manage your favourite sites.', image: images.tabImage1},
+    {title: 'Intelligent search', key: BookmarkTab.SEARCHING, text:'Our powerful search feature will help you find saved sites in no time at all. No need to trawl through all of your bookmarks.', image: images.tabImage2},
+    {title: 'Share your bookmarks', key: BookmarkTab.SHARING, text:'Easily share your bookmarks and collections with others. Create a shareable link that you can send at the click of a button.', image: images.tabImage3}
+  ];
+  
+
   render() {
     const tabItems: TabItem[] = [{title: 'Simple Bookmarking', key: BookmarkTab.BOOKMARKING}, {title: 'Speedy Searching', key: BookmarkTab.SEARCHING}, {title: 'Easy Sharing', key: BookmarkTab.SHARING}]
     return html`
@@ -109,49 +117,23 @@ class MyElement extends LitElement {
   }
 
   renderTab() {
-    switch (this.activeTab) {
-      case BookmarkTab.BOOKMARKING:
-        return html`
-        <img slot="svg" src=${images.tabImage1} />
+    const tab = this.tabContent.find(tb => tb.key === this.activeTab);
+    if(tab) {
+      return html`
+        <img slot="svg" src=${tab.image} />
         <div slot="content" class="tab-text">
           <h1 class="tab-title">
-            A Simple Bookmark Manager
+            ${tab.title}
           </h1>
           <p class="text">
-            Organize your bookmarks however you like. Our simple drag-and-drop interface gives you complete control over how you manage your favourite sites.
+            ${tab.text}
           </p>
           <bookmark-btn class="blue" content="More info"></bookmark-btn>
         </div>
-        `;
-      case BookmarkTab.SEARCHING:
-        return html`
-          <img slot="svg" src=${images.tabImage2} />
-          <div slot="content" class="tab-text">
-            <h1 class="tab-title">
-              Intelligent search
-            </h1>
-            <p class="text">
-              Our powerful search feature will help you find saved sites in no time at all. No need to trawl through all of your bookmarks.
-            </p>
-            <bookmark-btn class="blue" content="More info"></bookmark-btn>
-          </div>
-        `;
-      case BookmarkTab.SHARING:
-        return html`
-          <img slot="svg" src=${images.tabImage3} />
-          <div slot="content" class="tab-text">
-            <h1 class="tab-title">
-              Share your bookmarks
-            </h1>
-            <p class="text">
-            Easily share your bookmarks and collections with others. Create a shareable link that you can send at the click of a button.
-            </p>
-            <bookmark-btn class="blue" content="More info"></bookmark-btn>
-          </div>
-        `;
-      default:
-        return html`<div>No tab content provided</div>`
+      `;
     }
+
+    return  html`<div slot="content">No content provided</div>`;
   }
 
   renderAccordions() {
