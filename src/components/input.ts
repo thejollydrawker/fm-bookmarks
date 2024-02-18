@@ -11,8 +11,11 @@ class BookmarkInputText extends LitElement {
     @property({type: String})
     placeholder: string = '';
 
+    @property({type: Boolean})
+    required: boolean = false;
+
     @state()
-    showError: boolean = false;
+    isInvalid: boolean = false;
 
     @state()
     value: string = '';
@@ -22,18 +25,18 @@ class BookmarkInputText extends LitElement {
 
     render() {
         return html`
-        <div class="input-container ${this.showError ? 'error' : ''}">
-            <input id="bookmarkInput" placeholder=${this.placeholder} .value=${this.value} class="bookmark-input" @change=${this.handleInputEvent} type="text" />
-            <svg class="error-icon ${this.showError ? 'show' : 'hide'}" xmlns="http://www.w3.org/2000/svg" width="20" height="20"><g fill="none" fill-rule="evenodd"><circle cx="10" cy="10" r="10" fill="#FA5959"/><g fill="#FFF" transform="translate(9 5)"><rect width="2" height="7" rx="1"/><rect width="2" height="2" y="8" rx="1"/></g></g></svg>
-            <span class="error-msg ${this.showError ? 'show' : 'hide'}">${this.errorMsg}</span>
+        <div class="input-container ${this.isInvalid || this.required ? 'error' : ''}">
+            <input id="bookmarkInput" placeholder=${this.placeholder} .value=${this.value} class="bookmark-input" @input=${this.handleInputEvent} type="text" />
+            <svg class="error-icon ${this.isInvalid || this.required ? 'show' : 'hide'}" xmlns="http://www.w3.org/2000/svg" width="20" height="20"><g fill="none" fill-rule="evenodd"><circle cx="10" cy="10" r="10" fill="#FA5959"/><g fill="#FFF" transform="translate(9 5)"><rect width="2" height="7" rx="1"/><rect width="2" height="2" y="8" rx="1"/></g></g></svg>
+            <span class="error-msg ${this.isInvalid || this.required ? 'show' : 'hide'}">${this.errorMsg}</span>
         </div>
         `;
     }
 
     handleInputEvent(): void {
         this.value = (this.input as HTMLInputElement).value;
-        this.showError = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(this.value) !== true && this.value !== '';
-
+        this.isInvalid = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(this.value) !== true && this.value !== '';
+        this.dispatchEvent(new CustomEvent('change'));
     }
 
     static styles = css`

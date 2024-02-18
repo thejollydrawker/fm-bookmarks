@@ -1,5 +1,5 @@
 import {LitElement, css, html} from 'lit';
-import {customElement, state} from 'lit/decorators.js';
+import {customElement, query, state} from 'lit/decorators.js';
 
 import './components/ui';
 import './components/button';
@@ -29,7 +29,12 @@ class MyElement extends LitElement {
     {title: 'Intelligent search', key: BookmarkTab.SEARCHING, text:'Our powerful search feature will help you find saved sites in no time at all. No need to trawl through all of your bookmarks.', image: images.tabImage2},
     {title: 'Share your bookmarks', key: BookmarkTab.SHARING, text:'Easily share your bookmarks and collections with others. Create a shareable link that you can send at the click of a button.', image: images.tabImage3}
   ];
+
+  @state()
+  emailRequired: boolean = false;
   
+  @query('#email')
+  emailInput: HTMLElement;
 
   render() {
     const tabItems: TabItem[] = [{title: 'Simple Bookmarking', key: BookmarkTab.BOOKMARKING}, {title: 'Speedy Searching', key: BookmarkTab.SEARCHING}, {title: 'Easy Sharing', key: BookmarkTab.SHARING}]
@@ -104,8 +109,8 @@ class MyElement extends LitElement {
           <h2>Stay up-to-date with what we're doing</h2>
           <h4>35,000+ ALREADY JOINED</h4>
           <form class="contact-us">
-            <bookmark-input-text placeholder="Enter your email address" errorMsg="Whoops, make sure it's an email"></bookmark-input-text>
-            <bookmark-btn class="red" content="Contact us"></bookmark-btn>
+            <bookmark-input-text id="email" @change=${this.handleInputChange} .required=${this.emailRequired} placeholder="Enter your email address" errorMsg="Whoops, make sure it's an email"></bookmark-input-text>
+            <bookmark-btn @click=${this.sendForm} class="red" content="Contact us"></bookmark-btn>
           </form>
         </section>
         <bookmark-footer></bookmark-footer>
@@ -146,6 +151,16 @@ class MyElement extends LitElement {
         </div>
         `;
     })
+  }
+
+  sendForm(): void {
+    const val = (this.emailInput as HTMLInputElement).value;
+    if(val === '')
+      this.emailRequired = true;
+  }
+
+  handleInputChange(): void {
+    this.emailRequired = false;
   }
 
   static styles = css`
