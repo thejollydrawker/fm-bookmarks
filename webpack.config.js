@@ -27,7 +27,7 @@ const config = {
         }),
 
         new ModuleFederationPlugin({
-            name: "fm-bookmarks",
+            name: "fm_bookmarks",
             filename: "remoteEntry.js",
             remotes: {},
             exposes: {},
